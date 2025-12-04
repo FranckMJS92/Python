@@ -1,2 +1,0 @@
-# Python
-Clases de Python
