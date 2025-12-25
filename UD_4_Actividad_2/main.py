@@ -2,7 +2,10 @@ import Utilidades
 import gestion_contactos
 
 # tendrá un nombre, un número de teléfono y una dirección de correo electrónico.
-contactos = [["Ana", 67812345, "ana@gmail.com"], ["Juan", 976341234, "juan@gmail.com"]]
+contactos = {
+    "ana@gmail.com": {"nombre": "Ana", "telefono": 67812345},
+    "juan@gmail.com": {"nombre": "Juan", "telefono": 976341234},
+}
 
 
 def mostrar_menu():

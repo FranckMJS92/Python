@@ -6,19 +6,20 @@ if "Ana" in notas:
 else:
     print("No existe")
 
-print(notas)
+if "Ana" in notas:
+    notas.pop("Ana")
 
-# Solo mostrar claves
+# Solo mostrar las claves
 print("SOLO CLAVES")
 for clave in notas.keys():
     print(clave)
 
-# Solo mostrar valores
+# Solo mostrar las valores
 print("SOLO VALORES")
-for value in notas.values():
-    print(value)
+for valor in notas.values():
+    print(valor)
 
 # Recorremos claves y valores
-print("MOSTTAR CLAVE Y VALORES")
+print("CLAVES Y  VALORES")
 for clave, valor in notas.items():
-    print(f'{clave:<10}{valor:<10pp´l´kpkoñlñjñlñmlñmlñjmljmlloooooooo||    }')
+    print(f"{clave} = {valor}")
