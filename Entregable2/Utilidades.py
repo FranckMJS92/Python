@@ -1,6 +1,6 @@
 import math
 
-# Valida la opcion ingresada por usuario en el rango de 1 a 3
+# Valida la opcion ingresada por usuario en el rango
 def pedir_entero_rango(mensaje, min=1, max=3):
     while True:
         try:
@@ -32,3 +32,15 @@ def resultString(n1, n2):
         return "Empates ...",1
     elif n1 > n2:
         return "¡Ganas esta ronda!",2
+    
+# Validacion de numero decimal mayor que cero ingresado por usuario
+def pedir_float(mensaje):
+    while True:
+        try:
+            valor = float(input(mensaje))
+            if valor < 0:
+                print("Valor debe ser un numero mayor que cero")
+            else:
+                return valor
+        except ValueError:
+            print("valor no valido")
