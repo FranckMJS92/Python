@@ -7,7 +7,10 @@ def pedir_entero(mensaje):
     while True:
         try:
             valor = int(input(mensaje))
-            return valor
+            if valor < 0:
+                print("Valor debe ser un numero mayor que cero")
+            else:
+                return valor
         except ValueError:
             print("El valor no es entero")
 
@@ -28,10 +31,12 @@ def pedir_float(mensaje):
     while True:
         try:
             valor = float(input(mensaje))
-            return valor
+            if valor < 0:
+                print("Valor debe ser un numero mayor que cero")
+            else:
+                return valor
         except ValueError:
             print("valor no valido")
-
 
 # Se toma el numero de trabajadores / 10
 # ya que es el maximo de capacidad de 1 sala
