@@ -6,7 +6,6 @@ def deposit():
     sumMount = Utilidades.pedir_float(
         "Ingrese la cantidad que desea ingresar a su cuenta : "
     )
-
     return sumMount
 
 
@@ -27,5 +26,7 @@ def show(currentMount, initialMount):
     print(f"Saldo Actual : {currentMount} €")
 
 
-def statistics():
-    return ""
+def statistics(numDeposit, numWithdraw):
+    print("\n============ ESTADISTICAS ============")
+    print(f"Numeros de Ingresos : {Utilidades.redondear(numDeposit)}")
+    print(f"Numeros de Retiros : {Utilidades.redondear(numWithdraw)}")

@@ -1,11 +1,14 @@
 import Utilidades
 import GestionCuenta
 
-currentMount = 0
-
 print("\n============ DATOS BANCARIOS ============")
+# Saldo Inicial
 initialMount = Utilidades.pedir_float("Ingrese el saldo inicial de la cuenta : ")
-currentMount += initialMount
+# Saldo corriente
+currentMount = 0 + initialMount
+# Contaddores ingresos y retiros
+numDeposit = 0
+numWithdraw = 0
 
 while True:
     print("\n============ MENU OPCIONES ============")
@@ -20,11 +23,15 @@ while True:
     match option:
         case 1:
             currentMount += GestionCuenta.deposit()
+            numDeposit += 1
         case 2:
             currentMount -= GestionCuenta.withdraw(currentMount)
+            numWithdraw += 1
         case 3:
             GestionCuenta.show(currentMount, initialMount)
         case 4:
-            GestionCuenta.statistics()
+            GestionCuenta.statistics(numDeposit, numWithdraw)
         case 5:
             break
+
+print("Muchas gracias, hasta luego!")
