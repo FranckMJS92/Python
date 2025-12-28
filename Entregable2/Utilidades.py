@@ -1,5 +1,4 @@
-import math
-
+import os
 
 # Valida la opcion ingresada por usuario en el rango
 def pedir_entero_rango(mensaje, min=1, max=3):
@@ -53,3 +52,19 @@ def pedir_float(mensaje):
 # Redondeo para calculo de float
 def redondear(numero):
     return round(numero, 2)
+
+
+def validateDistance(distance):
+    "Valida que la distancia esté entre 30 y 60"
+    try:
+        distance_int = int(distance)
+        if 30 <= distance_int <= 60:
+            return distance_int, True
+        else:
+            return None, False
+    except ValueError:
+        return None, False
+
+def limpiar_pantalla():
+    "Limpia la pantalla según el sistema operativo"
+    os.system('cls' if os.name == 'nt' else 'clear')

@@ -1,13 +1,11 @@
 import Utilidades
 
-
 def deposit():
     print("\n============ INGRESO EN CUENTA ============")
     sumMount = Utilidades.pedir_float(
         "Ingrese la cantidad que desea ingresar a su cuenta : "
     )
     return sumMount
-
 
 def withdraw(currentMount):
     print("\n============ RETIRO DE CUENTA ============")
@@ -19,12 +17,10 @@ def withdraw(currentMount):
     else:
         return lessMount
 
-
 def show(currentMount, initialMount):
     print("\n====== SALDO DE LA CUENTA =====")
     print(f"Saldo Inicial : {initialMount} €")
     print(f"Saldo Actual : {currentMount} €")
-
 
 def statistics(numDeposit, numWithdraw):
     print("\n============ ESTADISTICAS ============")
