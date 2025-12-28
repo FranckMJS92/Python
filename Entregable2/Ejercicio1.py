@@ -22,7 +22,7 @@ while wins < 3:
     print(f"Jugada de la máquina : {gameMachine}")
 
     # Variable result almacena: string -> mensaje de cada ronda | int -> para evaluar las wins totales
-    result = Utilidades.resultString(userOption, machineOption)
+    result = Utilidades.result_string(userOption, machineOption)
     print(f"Resultado : {result[0]}")
 
     # Logica para sumar las wins de cada partida
@@ -40,9 +40,9 @@ while wins < 3:
 
     wins = winUser + winMachine
 
-print("\n=========================================")
+print("\n" + "="*42)
 if winUser < winMachine:
     print(f"La maquina gana la partida final : {winUser} - {winMachine}")
 else:
     print(f"Has ganado la partida final : {winUser} - {winMachine}")
-print("=========================================")
+print("="*42)

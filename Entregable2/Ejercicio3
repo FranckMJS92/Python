@@ -1,113 +1,77 @@
-import random
-from utilidades import validar_distancia, limpiar_pantalla
+import Utilidades
+import GestionCarrera
 
+# Inicio del programa
+print("=" * 50)
+print("        🏁 CARRERA DE COCHES 🏁")
+print("=" * 50)
 
-def mostrar_carrera(distancia, pos_a, pos_b):
-    """Muestra el estado actual de la carrera"""
-    print("\n" + "=" * (distancia + 10))
-    print("🎌 CARRERA DE COCHES 🎌")
-    print("=" * (distancia + 10) + "\n")
+# Mostrar probabilidades
+print("\n📊 PROBABILIDADES DE EVENTOS:")
+print("   💥 Pinchazo: 20% -> Retrocede 5 casillas")
+print("   ✨ Turno bueno: 30% -> Avanza 5 casillas")
+print("   ➖ Nada: 50% -> No avanza")
+print("-" * 40)
 
-    # Mostrar meta
-    print("🎯 META: " + " " * (distancia - 6) + "|FIN|\n")
+# Pedir y validar distancia
+distanceInput = Utilidades.pedir_entero_rango("\nIntroduce la distancia de la carrera (30-60): ",30,60)
 
-    # Mostrar pista del coche A (Jugador)
-    pista_a = " " * pos_a + "🚗 A" + " " * (distancia - pos_a - 4)
-    print(f"Jugador:  |{pista_a}| ({pos_a}/{distancia})")
+# Inicializar posiciones
+pos_a = 0  # Coche jugador
+pos_b = 0  # Coche máquina
+turno = 1
 
-    # Mostrar pista del coche B (Máquina)
-    pista_b = " " * pos_b + "🚙 B" + " " * (distancia - pos_b - 4)
-    print(f"Máquina:  |{pista_b}| ({pos_b}/{distancia})")
+print("\n" + "=" * 50)
+print("¡PREPARADOS! Presiona ENTER para cada turno.")
+print("=" * 50)
 
-    # Línea de meta visual
-    print("\n" + "-" * (distancia + 10))
+# Bucle principal del juego
+while pos_a < distanceInput and pos_b < distanceInput:
+    input(f"\n🎮 Turno {turno} - Presiona ENTER para avanzar...")
+    Utilidades.limpiar_pantalla()
 
+    # Turno del jugador (Coche A)
+    print("\n🎮 TURNO DEL JUGADOR 🎮")
+    pos_a, evento_a, avance_a = GestionCarrera.go_car(pos_a, distanceInput, "Jugador")
+    GestionCarrera.show_event(evento_a, "Jugador")
 
-def avanzar_coche(pos_actual, distancia):
-    """Avanza un coche entre 1 y 3 posiciones"""
-    avance = random.randint(1, 3)
-    nueva_pos = pos_actual + avance
+    # Turno de la máquina (Coche B)
+    print("\n🤖 TURNO DE LA MÁQUINA 🤖")
+    pos_b, evento_b, avance_b = GestionCarrera.go_car(pos_a, distanceInput, "Jugador")
+    GestionCarrera.show_event(evento_b, "Jugador")
 
-    # No pasarse de la meta
-    if nueva_pos > distancia:
-        nueva_pos = distancia
+    # Mostrar estado actual
+    GestionCarrera.draw_car(distanceInput, pos_a, pos_b)
 
-    return nueva_pos, avance
+    # Resumen del turno
+    print(f"\n📝 RESUMEN TURNO {turno}:")
+    print(f"   🚗 Jugador: {evento_a.replace('_', ' ').title()} (avance: {avance_a:+})")
+    print(f"   🚙 Máquina: {evento_b.replace('_', ' ').title()} (avance: {avance_b:+})")
 
+    # Verificar si alguien ganó
+    if pos_a >= distanceInput and pos_b >= distanceInput:
+        print("\n" + "=" * 50)
+        print("🏆 ¡EMPATE! Ambos llegaron a la vez 🏆")
+        print("=" * 50)
+        break
+    elif pos_a >= distanceInput:
+        print("\n" + "=" * 50)
+        print("🏆 ¡FELICIDADES! ¡GANASTE! 🏆")
+        print("=" * 50)
+        break
+    elif pos_b >= distanceInput:
+        print("\n" + "=" * 50)
+        print("😞 ¡PERDISTE! La máquina ganó 😞")
+        print("=" * 50)
+        break
 
-def main():
-    """Función principal del juego"""
-    print("=" * 50)
-    print("        🏁 CARRERA DE COCHES 🏁")
-    print("=" * 50)
+    turno += 1
 
-    # 1) Pedir y validar distancia
-    while True:
-        distancia_input = input("\nIntroduce la distancia de la carrera (30-60): ")
-        distancia, es_valida = validar_distancia(distancia_input)
+# Estadísticas finales
+print(f"\n📊 RESUMEN DE LA CARRERA:")
+print(f"   Distancia total: {distanceInput} casillas")
+print(f"   Turnos jugados: {turno}")
+print(f"   Posición final Jugador: {pos_a}/{distanceInput}")
+print(f"   Posición final Máquina: {pos_b}/{distanceInput}")
 
-        if es_valida:
-            print(f"\n✅ Carrera configurada a {distancia} casillas!")
-            break
-        else:
-            print("❌ Distancia no válida. Debe ser un número entre 30 y 60.")
-
-    # Inicializar posiciones
-    pos_a = 0  # Coche jugador
-    pos_b = 0  # Coche máquina
-    turno = 1
-
-    print("\n" + "=" * 50)
-    print("¡PREPARADOS! Presiona ENTER para cada turno.")
-    print("=" * 50)
-
-    # Bucle principal del juego
-    while pos_a < distancia and pos_b < distancia:
-        input(f"\n🎮 Turno {turno} - Presiona ENTER para avanzar...")
-        limpiar_pantalla()
-
-        # Turno del jugador (Coche A)
-        print("\n🎮 TURNO DEL JUGADOR 🎮")
-        pos_a, avance_a = avanzar_coche(pos_a, distancia)
-        print(f"🚗 Coche A avanza {avance_a} posiciones")
-
-        # Turno de la máquina (Coche B)
-        print("\n🤖 TURNO DE LA MÁQUINA 🤖")
-        pos_b, avance_b = avanzar_coche(pos_b, distancia)
-        print(f"🚙 Coche B avanza {avance_b} posiciones")
-
-        # Mostrar estado actual
-        mostrar_carrera(distancia, pos_a, pos_b)
-
-        # Verificar si alguien ganó
-        if pos_a >= distancia and pos_b >= distancia:
-            print("\n" + "=" * 50)
-            print("🏆 ¡EMPATE! Ambos llegaron a la vez 🏆")
-            print("=" * 50)
-            break
-        elif pos_a >= distancia:
-            print("\n" + "=" * 50)
-            print("🏆 ¡FELICIDADES! ¡GANASTE! 🏆")
-            print("=" * 50)
-            break
-        elif pos_b >= distancia:
-            print("\n" + "=" * 50)
-            print("😞 ¡PERDISTE! La máquina ganó 😞")
-            print("=" * 50)
-            break
-
-        turno += 1
-
-    # Estadísticas finales
-    print(f"\n📊 RESUMEN DE LA CARRERA:")
-    print(f"   Distancia total: {distancia} casillas")
-    print(f"   Turnos jugados: {turno}")
-    print(f"   Posición final Jugador: {pos_a}/{distancia}")
-    print(f"   Posición final Máquina: {pos_b}/{distancia}")
-
-    input("\nPresiona ENTER para salir...")
-
-
-# Punto de entrada del programa
-if __name__ == "__main__":
-    main()
+input("\nPresiona ENTER para salir...")

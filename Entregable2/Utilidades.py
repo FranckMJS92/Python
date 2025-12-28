@@ -27,7 +27,7 @@ def game(numero):
 # Valida el resultado y devuelve un String y un entero
 # El string se muestra directo en el resultado de cada ronda
 # El entero sirve para evaluar la cantidad de victorias y mostrar el resultado final
-def resultString(n1, n2):
+def result_string(n1, n2):
     if n1 < n2:
         return "Pierdes esta ronda ... ", 0
     elif n1 == n2:
@@ -53,18 +53,6 @@ def pedir_float(mensaje):
 def redondear(numero):
     return round(numero, 2)
 
-
-def validateDistance(distance):
-    "Valida que la distancia esté entre 30 y 60"
-    try:
-        distance_int = int(distance)
-        if 30 <= distance_int <= 60:
-            return distance_int, True
-        else:
-            return None, False
-    except ValueError:
-        return None, False
-
+# Limpia la pantalla según el sistema operativo
 def limpiar_pantalla():
-    "Limpia la pantalla según el sistema operativo"
     os.system('cls' if os.name == 'nt' else 'clear')
