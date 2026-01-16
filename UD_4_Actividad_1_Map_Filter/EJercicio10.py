@@ -2,7 +2,6 @@
 
 print("EJERCICIO 10")
 
-
 # Funcion Menu
 def menu():
     # while True:
@@ -13,13 +12,11 @@ def menu():
     print("4. Salir del programa.")
     input("Dime una opcion : ")
 
-
 # Funcion Aplicar IVA
 def aplicarIVA():
     print(productos.items)
     print(productos.values)
     # precioConIVA= map(lambda item : )
-
 
 # Diccionario de productos
 productos = {
