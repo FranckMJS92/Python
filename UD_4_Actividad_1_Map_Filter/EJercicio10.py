@@ -1,10 +1,6 @@
 # EJERCICIO 10
 
-
-
 print("EJERCICIO 10")
-
-
 
 # Funcion Menu
 def menu():
@@ -16,15 +12,11 @@ def menu():
     print("4. Salir del programa.")
     input("Dime una opcion : ")
 
-
-
 # Funcion Aplicar IVA
 def aplicarIVA():
     print(productos.items)
     print(productos.values)
     # precioConIVA= map(lambda item : )
-
-
 
 # Diccionario de productos
 productos = {
@@ -34,8 +26,6 @@ productos = {
     "456789": {"nombre": "Huevos", "precio": 2.5, "stock": 12, "categoria": "Lácteo"},
     "567890": {"nombre": "Platanos", "precio": 1.8, "stock": 3, "categoria": "Fruta"},
 }
-
-
 
 menu()
 aplicarIVA()
