@@ -1,4 +1,4 @@
-from Entregable3.textos import *
+from Entregable3.ejercicio1.textos import *
 
 print("="*8 + " INICIO DEL PROGRAMA " + "="*8)
 
@@ -11,8 +11,8 @@ while(True):
         break
 
     # Ejecuta e imprime resultado de los metodos siempre que la cadena no esté vacía
-    print("Número de palabras : " + contar_palabras(cadena))
-    print("Número total de caracteres (sin espacios ni puntuación): " + caracteres_total(cadena))
-    print("Palabra mas larga: " + palabra_mas_larga(cadena))
+    print(f'Número de palabras : {contar_palabras(cadena)}')
+    print(f'Número total de caracteres (sin espacios ni puntuación): {caracteres_total(cadena)}')
+    print(f'Palabra mas larga: {palabra_mas_larga(cadena)}')
 
 
