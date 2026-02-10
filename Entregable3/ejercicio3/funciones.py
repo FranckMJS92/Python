@@ -24,5 +24,16 @@ def ordernar_lista(lista):
 
     return nueva_lista
 
-def busqueda_binaria(lista, elemento, inicio=0, fin):
-    return 0
+def busqueda_binaria(lista, elemento, inicio, fin):
+    if inicio > fin:
+        return -1
+    medio = (inicio + fin) // 2
+
+    if (elemento == lista[medio]):
+        return medio
+    elif (elemento < lista[medio]):
+        return busqueda_binaria(lista, elemento, inicio, medio - 1)
+    else:
+        return busqueda_binaria(lista, elemento, medio + 1, fin)
+
+
