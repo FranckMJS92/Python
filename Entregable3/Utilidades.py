@@ -15,3 +15,11 @@ def validar_cadena_depurada(cadena):
         return False
     else:
         return True
+
+def pedir_entero(mensaje):
+    while True:
+        try:
+            valor = int(input(mensaje))
+            return valor
+        except ValueError:
+            print("El valor no es entero")

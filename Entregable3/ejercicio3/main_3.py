@@ -1,3 +1,4 @@
+from Entregable3.Utilidades import pedir_entero
 from Entregable3.ejercicio3.funciones import *
 
 # Declaracion funcion ordenar_lista()
@@ -11,6 +12,8 @@ print(f' Lista ordenada : {lista_ordenada}')
 inicio = 0
 fin = len(lista_ordenada)-1
 
-valor_binario = busqueda_binaria(lista_ordenada, 73,inicio,fin)
+numero_buscar = pedir_entero("\nIngrese un numero entero para buscar : ")
 
-print(f' Valor binario : {valor_binario}')
+valor_binario = busqueda_binaria(lista_ordenada, numero_buscar,inicio,fin)
+
+print(f'Valor binario : {valor_binario}')
