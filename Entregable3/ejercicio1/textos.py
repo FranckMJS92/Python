@@ -27,12 +27,11 @@ def palabra_mas_larga(cadena):
     array_cadena = cadena_depurada.split()
 
     # Declara variable para return
-    valor = ""
+    valor = array_cadena[0]
 
     # Recorre el array y almacen la palabra en variable 'valor'
     # Luego compara longitudes y reasigna
-    for i in range(len(array_cadena)):
-        valor = array_cadena[i]
-        if len(valor) > 0:
-            valor = array_cadena[i] if len(array_cadena[i])>len(valor) else valor
+    for i in range(len(array_cadena)-1):
+        if len(valor) < len(array_cadena[i+1]):
+            valor = array_cadena[i+1]
     return valor

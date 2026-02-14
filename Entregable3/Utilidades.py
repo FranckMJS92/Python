@@ -1,13 +1,3 @@
-def validar_input(mensaje):
-    while True:
-        try:
-            valor = str(input(mensaje))
-            if isinstance(valor, str):
-                return valor
-        except ValueError:
-            print("El valor no es entero")
-
-
 def depurar_cadena(cadena):
     # Tupla de signos para saber que signos atacar
     signos = (",", ".", ";", ":", "!", "¡", "?", "¿", " ")
