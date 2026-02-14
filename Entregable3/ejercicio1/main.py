@@ -15,7 +15,7 @@ while(True):
     if(not validar_cadena_depurada(cadena_depurada)):
         break
 
-    print(cadena_depurada)
+    print(f'Cadena Depurada : {cadena_depurada}')
 
     # Ejecuta e imprime resultado de los metodos siempre que la cadena no esté vacía
     print(f'Número de palabras : {contar_palabras(cadena)}')
