@@ -1,3 +1,4 @@
+from Entregable3.Utilidades import validar_cadena_depurada
 from Entregable3.ejercicio1.textos import *
 
 print("="*8 + " INICIO DEL PROGRAMA " + "="*8)
@@ -7,13 +8,15 @@ while(True):
 
     # Condicional para salir del bucle en caso la cadena ingresada por usuario sea vacia
     if cadena == "":
-        print("="*8 + " FIN DEL PROGRAMA " + "="*8)
         break
 
-    print(depurar_cadena(cadena))
+    cadena_depurada = depurar_cadena(cadena)
 
-    if(len(depurar_cadena(cadena))<1):
+    if(not validar_cadena_depurada(cadena_depurada)):
         break
+
+    print(cadena_depurada)
+
     # Ejecuta e imprime resultado de los metodos siempre que la cadena no esté vacía
     print(f'Número de palabras : {contar_palabras(cadena)}')
     print(f'Número total de caracteres (sin espacios ni puntuación): {caracteres_total(cadena)}')

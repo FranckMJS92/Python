@@ -9,3 +9,9 @@ def depurar_cadena(cadena):
     # Elimina espacios en blanco al principio y/o final
     cadena = cadena.strip()
     return cadena
+
+def validar_cadena_depurada(cadena):
+    if(len(depurar_cadena(cadena))<1):
+        return False
+    else:
+        return True
