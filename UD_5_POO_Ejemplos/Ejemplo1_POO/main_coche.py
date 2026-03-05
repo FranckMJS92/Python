@@ -1,4 +1,5 @@
-from UD_5_POO_Ejemplos.ejemplo1.Coche import *
+
+from Coche import *
 
 c1 = Coche("Seat","León",2500)
 c2 = Coche("Seat","Arona")
