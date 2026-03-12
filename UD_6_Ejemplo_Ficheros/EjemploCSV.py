@@ -15,4 +15,4 @@ with open("datos.csv","r",encoding="utf-8") as csvfile:
     # Creamos un obvjeto "lector", indicamos el delimitador
     lector = csv.reader(csvfile,delimiter=",")
     for row in lector:
-        print(row)
+        print(row[0],row[1],row[2])

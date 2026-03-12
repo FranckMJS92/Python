@@ -1,0 +1,19 @@
+[
+    {
+        "nombre": "pepe",
+        "edad": 22,
+        "activo": false,
+        "roles": [
+            "admin",
+            "editor"
+        ]
+    },
+    {
+        "nombre": "ana",
+        "edad": 32,
+        "activo": false,
+        "roles": [
+            "usuario"
+        ]
+    }
+]
