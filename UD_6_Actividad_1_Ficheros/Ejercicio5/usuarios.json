@@ -1,19 +1,10 @@
 [
     {
-        "nombre": "pepe",
-        "edad": 22,
+        "nombre": "franck",
+        "edad": 33,
         "activo": false,
         "roles": [
-            "admin",
-            "editor"
-        ]
-    },
-    {
-        "nombre": "ana",
-        "edad": 32,
-        "activo": false,
-        "roles": [
-            "usuario"
+            "development"
         ]
     }
 ]
