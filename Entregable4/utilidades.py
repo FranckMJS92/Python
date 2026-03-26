@@ -1,22 +1,18 @@
 import os
 
-def depurar_cadena(cadena):
-    # Tupla de signos para saber que signos atacar
-    signos = (",", ".", ";", ":", "!", "¡", "?", "¿", " ")
-    # Recorrido de cadena y reemplazo todos los signos por espacios
-    for caracter in signos:
-        cadena = cadena.replace(caracter, " ")
+# Pide al usuario la cadena de texto
+# Retorna mensaje si la cadena esta vacia y solicita ingreso nuevo
+# Si valor es correcto, quita espacios y le da formato como
+# se encuentran los titulos en el diccionario
+def pedir_texto(mensaje):
+    while True:
+        valor = input(mensaje)
+        if len(valor) > 0:
+            valor=valor.strip().lower().title()
+            return valor
+        else:
+            print("No puede ser vacio")
 
-    # Metodo strip() de string
-    # Elimina espacios en blanco al principio y/o final
-    cadena = cadena.strip()
-    return cadena
-
-def validar_cadena_depurada(cadena):
-    if(len(depurar_cadena(cadena))<1):
-        return False
-    else:
-        return True
 
 def pedir_entero(mensaje):
     while True:
@@ -56,3 +52,14 @@ def redondear(numero):
 # Limpia la pantalla según el sistema operativo
 def limpiar_pantalla():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def mostrar_menu():
+        print("\n============ MENU OPCIONES ============")
+        print("1.- Mostrar todos")
+        print("2.- Agregar serie/película")
+        print("3.- Eliminar serie/película")
+        print("4.- Buscar serie/película")
+        print("5.- Actualizar valoración")
+        print("6.- Filtrar por género")
+        print("7.- Mostrar mejores series/peliculas")
+        print("8.- Salir")
