@@ -72,7 +72,8 @@ while True:
             genero_filter = pedir_texto_validacion("Ingrese genero a filtrar: ")
             filtrar_genero(catalogo, genero_filter)
         case 7:
-            mejores_n(catalogo, 2)
+            n = pedir_numero_rango("Ingrese cuantos registros desea: ", 1, len(catalogo))
+            mejores_n(catalogo, n)
         case 8:
             print("\nHasta la proxima!!!!")
             # Salimos del bucle
