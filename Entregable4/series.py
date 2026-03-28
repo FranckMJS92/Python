@@ -73,20 +73,10 @@ def filtrar_genero(catalogo,genero):
         # Si no encuentra coincidencia indica por mensaje
         print(f"\nNo se encontro pelicula o serie con genero: {genero}")
 
-def mostrar_mejores(catalogo):
-    # Variable para saber cuantas peliculas/series cumplen condicion
-    count_best=0
-    # Bucle para recorrer catalogo
-    for k, v in catalogo.items():
-        for k1, v1 in v.items():
-            # Cuando la clave del subdiccionario sea "valoracion"
-            # Se evalua el value
-            if k1 == "valoracion":
-                if v1>=9:
-                    # De cumplirse se suma 1 a variable
-                    count_best+=1
-                    # Y se muestra en consola
-                    mostrar_diccionario(k,v)
-    # De no encontrarse pelicula o serie, se devuelve mensaje indicandolo
-    if count_best==0:
-        print("\nNinguna pelicula o serie cumple la condicion")
+# funcion lambd
+# Obtiene los n elementos con mayor valor de "valoracion"
+# Primero se usa sorted para ordenar por "valoracion"
+def mejores_n(catalogo, n):
+    top_n = dict(sorted(catalogo.items(), key=lambda x: x[1]["valoracion"], reverse=True)[:n])
+    for k,v in top_n.items():
+        mostrar_diccionario(k,v)
