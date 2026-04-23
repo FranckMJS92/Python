@@ -1,12 +1,30 @@
 """
-Pide una cadena al usuario.
-Si no_vacia es True, no permite cadenas vacías o solo espacios.
+Menu para solicitar peticiones al usuario
 """
-def pedir_cadena(mensaje, no_vacia=True):
+def mostrar_menu():
+    print("\n" + "=" * 50)
+    print("        GESTIÓN DE PRODUCCIÓN ELÉCTRICA")
+    print("=" * 50)
+    print("1. Añadir nueva central")
+    print("2. Mostrar todas las centrales")
+    print("3. Mostrar producción total (todas las centrales)")
+    print("4. Mostrar producción total (centrales térmicas)")
+    print("5. Mostrar producción total (centrales nucleares)")
+    print("6. Mostrar producción de una central (por nombre)")
+    print("7. Contar centrales térmicas por tipo de combustible")
+    print("8. Mostrar central con mayor producción")
+    print("9. Salir")
+    print("=" * 50)
+
+"""
+Pide una cadena al usuario.
+No permite cadenas vacías o solo espacios.
+"""
+def pedir_cadena(mensaje):
     while True:
         try:
             valor = input(mensaje).strip()
-            if no_vacia and not valor:
+            if not valor:
                 raise ValueError("La entrada no puede estar vacía")
             return valor.upper()
         except ValueError as e:
@@ -14,7 +32,7 @@ def pedir_cadena(mensaje, no_vacia=True):
 
 
 """Pide un entero. Si minimo/maximo no son None, valida el rango."""
-def pedir_entero(mensaje, minimo=None, maximo=None):
+def pedir_entero(mensaje, minimo, maximo):
     while True:
         try:
             valor = input(mensaje)
@@ -34,7 +52,7 @@ def pedir_entero(mensaje, minimo=None, maximo=None):
 
 
 """Pide un flotante. Si minimo/maximo no son None, valida el rango."""
-def pedir_float(mensaje, minimo=None, maximo=None):
+def pedir_float(mensaje, minimo, maximo=None):
     while True:
         try:
             valor = input(mensaje)
@@ -43,17 +61,15 @@ def pedir_float(mensaje, minimo=None, maximo=None):
 
             flotante = float(valor)
 
-            if minimo is not None and flotante < minimo:
+            if flotante < minimo:
                 raise ValueError(f"El valor debe ser mayor o igual a {minimo}")
             if maximo is not None and flotante > maximo:
                 raise ValueError(f"El valor debe ser menor o igual a {maximo}")
 
             return flotante
-        except ValueError as e:
-            if "could not convert" in str(e):
+        except ValueError:
                 print(f"Error: Debes introducir un número (puede ser decimal). Inténtalo de nuevo.")
-            else:
-                print(f"Error: {e}. Inténtalo de nuevo.")
+
 
 
 """

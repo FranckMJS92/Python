@@ -5,23 +5,6 @@ from Enums.Combustible import Combustible
 from Enums.MaterialFisil import MaterialFisil
 from Utilities.Utilities import *
 
-
-def mostrar_menu():
-    print("\n" + "=" * 50)
-    print("        GESTIÓN DE PRODUCCIÓN ELÉCTRICA")
-    print("=" * 50)
-    print("1. Añadir nueva central")
-    print("2. Mostrar todas las centrales")
-    print("3. Mostrar producción total (todas las centrales)")
-    print("4. Mostrar producción total (centrales térmicas)")
-    print("5. Mostrar producción total (centrales nucleares)")
-    print("6. Mostrar producción de una central (por nombre)")
-    print("7. Contar centrales térmicas por tipo de combustible")
-    print("8. Mostrar central con mayor producción")
-    print("9. Salir")
-    print("=" * 50)
-
-
 parque = ParqueGeneracion()
 
 while True:
