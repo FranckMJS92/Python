@@ -1,5 +1,5 @@
 class Producto:
-    def __init__(self,id, nombre, categoria, precio, stock):
+    def __init__(self, id, nombre, categoria, precio, stock):
         self.id = id
         self.nombre = nombre
         self.categoria = categoria
@@ -7,4 +7,4 @@ class Producto:
         self.stock = stock
 
     def __str__(self):
-        return f"{self.id} || {self.nombre} || {self.categoria} || {self.precio}"
+        return f"{self.id} || {self.nombre} || {self.categoria} || {self.precio} || {self.stock}"
