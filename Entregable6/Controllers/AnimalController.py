@@ -21,20 +21,30 @@ class AnimalController:
     def listar_animales(self):
         """
         Obtiene todos los animales del modelo y los envía a la vista para mostrar.
+        Returns:
+            Listado de animales en la base de datos o mensaje si no encuentra registros
         """
         animales = self.modelo.obtener_animales()
-        self.vista.mostrar_animales(animales)
+        if len(animales) == 0:
+            self.vista.mostrar_mensaje("No hay animales en la base de datos ✖️")
+        else:
+            self.vista.mostrar_animales(animales)
 
     def listar_especies(self, especie):
         """
         Filtra animales por especie y los muestra.
         Args:
             especie (str): Especie a filtrar (ej: "Perro", "Gato")
+        Returns:
+            Listado de animales en la base de datos o mensaje si no encuentra registros
         """
         animales = self.modelo.listar_especies(especie)
-        self.vista.mostrar_mensaje("\nAnimales del refugio por Especie")
-        print("*" * 44)
-        self.vista.mostrar_animales(animales)
+        if len(animales) == 0:
+            self.vista.mostrar_mensaje("No hay animales en la base de datos con el criterio seleccionado ✖️")
+        else:
+            self.vista.mostrar_mensaje("\nAnimales del refugio por Especie")
+            print("*" * 44)
+            self.vista.mostrar_animales(animales)
 
     def agregar_animal(self, nombre, especie, edad, adoptado):
         """
@@ -54,26 +64,45 @@ class AnimalController:
     def adoptar_animal(self, id):
         """
         Marca un animal como adoptado.
-        Args:
-            id (int): ID del animal a adoptar
+        Primero verifica que exista y que no esté ya adoptado.
         """
+        # Obtener el objeto Animal primero
+        animal = self.modelo.obtener_animal_por_id(id)
+
+        # Validaciones
+        if animal is None:
+            self.vista.mostrar_mensaje(f"No existe ningún animal con ID {id} ✖️")
+            return
+
+        if animal.adoptado == "Si":
+            self.vista.mostrar_mensaje(f"El animal '{animal.nombre}' (ID: {id}) ya está adoptado ⚠️")
+            return
+
+        # Si pasa las validaciones, proceder a adoptar
         done = self.modelo.adoptar_animal(id)
-        if done is not None:
-            self.vista.mostrar_mensaje("Animal adoptado! ✔️")
+        if done:
+            self.vista.mostrar_mensaje(f"{animal.nombre} (ID: {id}) adoptado correctamente ✔️")
         else:
-            self.vista.mostrar_mensaje("Error al adoptar animal al refugio ✖️")
+            self.vista.mostrar_mensaje(f"Error al adoptar al animal con ID {id} ✖️")
 
     def eliminar_animal(self, id):
         """
         Elimina un animal del refugio.
-        Args:
-            id (int): ID del animal a eliminar
+        Primero verifica que exista y muestra su nombre antes de eliminar.
         """
+        # Obtener el objeto Animal primero
+        animal = self.modelo.obtener_animal_por_id(id)
+
+        # Validaciones
+        if animal is None:
+            self.vista.mostrar_mensaje(f"No existe ningún animal con ID {id} ✖️")
+            return
+
         done = self.modelo.eliminar_animal(id)
-        if done is not None:
-            self.vista.mostrar_mensaje("Animal eliminado! ✔️")
+        if done:
+            self.vista.mostrar_mensaje(f"{animal.nombre} (ID: {id}) eliminado correctamente ✔️")
         else:
-            self.vista.mostrar_mensaje("Error al eliminar animal al refugio ✖️")
+            self.vista.mostrar_mensaje(f"Error al eliminar al animal con ID {id} ✖️")
 
     def obtener_ultimo(self):
         """

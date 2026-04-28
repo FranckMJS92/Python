@@ -48,7 +48,7 @@ while True:
             # Eliminar un animal del refugio
             ultimo = controlador.obtener_ultimo()
             if ultimo is not None and ultimo > 0:
-                id = pedir_entero_rango("Indica el Id del animal eliminado del refugio: ", 1, ultimo)
+                id = pedir_entero_rango("Indica el Id del animal a eliminar del refugio: ", 1, ultimo)
                 controlador.eliminar_animal(id)
             else:
                 print("⚠️ No hay animales para eliminar.")

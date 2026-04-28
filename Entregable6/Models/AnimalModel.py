@@ -127,8 +127,29 @@ class AnimalModel:
         if conexion:
             cursor = conexion.cursor()
             cursor.execute("SELECT * FROM animales ORDER BY id DESC LIMIT 1")
-            resultado = cursor.fetchone()  # Mejor que fetchall() para un solo registro
+            resultado = cursor.fetchone()
             conexion.close()
             return resultado[0] if resultado else None  # Retorna None si no hay registros
         else:
             return None
+
+    def obtener_animal_por_id(self, id):
+        """
+        Obtiene un animal por su ID.
+        Args:
+            id (int): ID del animal a buscar
+        Returns:
+            Animal | None: Objeto Animal si existe, None si no existe o error de conexión
+        """
+        conexion = crear_conexion()
+        if conexion:
+            cursor = conexion.cursor()
+            cursor.execute("SELECT * FROM animales WHERE id = %s", (id,))
+            resultado = cursor.fetchone()  # Tupla o None
+            conexion.close()
+
+            if resultado:
+                # Desempaqueta la tupla y crea el objeto Animal para devolverlo
+                return Animal(*resultado)
+            return None
+        return None
