@@ -7,7 +7,7 @@ La aplicación debe permitir consultas, inserciones, modificaciones, borrado y e
 
 ## Script de Base de Datos
 
-```'sql
+```sql
 -- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS refugio_animales;
 USE refugio_animales;
@@ -32,19 +32,19 @@ INSERT INTO animales (nombre, especie, edad, adoptado) VALUES
 
 ## Estructura de Carpetas
 
-Entregable6
-├── main.py                 # Programa principal de ejecución
-├── config.py               # Contiene la configuracion para la conexion a BBDD Mysql
-├── conexion.py             # Clase para la conexion con BBDD Mysql
-├── Models/
-│ ├── Animal.py             # Clase enum para tipos de combustible de centrales termicas
-│ └── AnimalModel.py        # Clase enum para tipos de material fisil de centrales nucleares
-├── Views/
-│ └── AnimalView.py         # Clase enum para tipos de combustible de centrales termicas
-├── Controllers/
-│ └── AnimalController.py   # Clase abstracta central
-└── Utilities/
-  └── Utilities.py          # Utilidades para validacion
+- **Entregable6/**
+  - `main.py` - Programa principal de ejecución
+  - `config.py` - Configuración para la conexión a BBDD MySQL
+  - `conexion.py` - Clase para la conexión con BBDD MySQL
+  - **Models/**
+    - `Animal.py` - Clase Animal
+    - `AnimalModel.py` - Modelo para gestión de animales
+  - **Views/**
+    - `AnimalView.py` - Vista para interfaz de usuario
+  - **Controllers/**
+    - `AnimalController.py` - Controlador de la aplicación
+  - **Utilities/**
+    - `Utilities.py` - Utilidades para validación
 
 ## Funcionalidades
 
