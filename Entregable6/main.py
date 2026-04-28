@@ -63,5 +63,5 @@ while True:
             break
 
         case _:
-            # Opción no contemplada (por seguridad, aunque pedir_entero_rango ya valida)
+            # Opción no contemplada
             print("Opción inválida")

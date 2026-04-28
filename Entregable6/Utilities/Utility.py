@@ -43,7 +43,7 @@ def pedir_entero_rango(mensaje, min=0, max=25):
             else:
                 print(f"El valor debe estar entre {min} y {max}")
         except ValueError:
-            print("El valor no es un número válido")  # ✅ Corregido: "no es numero valido" → "no es un número válido"
+            print("El valor no es un número válido")
 
 
 def pedir_si_no(mensaje):

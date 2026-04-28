@@ -16,7 +16,7 @@ class AnimalController:
         Inicializa las instancias del modelo y la vista.
         """
         self.modelo = AnimalModel()  # Capa de acceso a datos
-        self.vista = AnimalView()  # Capa de presentación
+        self.vista = AnimalView()    # Capa de presentación
 
     def listar_animales(self):
         """
